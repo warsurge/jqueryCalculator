@@ -14,15 +14,16 @@ $(document).ready(function() {
     // How will you know when a user is done entering the first number? operator
     
     $(".btn").on("click", function(event) {
-        targetValue = $(this).attr("value");
+        let targetValue = $(this).attr("value");
+        let targetText = $(this).text();
 
         if (targetValue !== null) {
             //  Button press resolution goes here.
-            storeNumber(targetValue);
+            storeNumber(targetValue, targetText);
         }
     })
 
-    function storeNumber(numberValue) {
+    function storeNumber(numberValue, numberText) {
         if (!isNaN(numberValue)) {
             if (operator == "") {
                 firstNumber += numberValue;
@@ -31,6 +32,10 @@ $(document).ready(function() {
                 secondNumber += numberValue;
                 $("#second-number").text(secondNumber);
             }
+
+        } else if (numberValue != "clear") {
+            operator = numberValue;
+            $("#operator").text(numberText);
         }
     }
 });
