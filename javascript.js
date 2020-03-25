@@ -1,5 +1,10 @@
 $(document).ready(function() {
 
+    var firstNumber = "";
+    var operator = "";
+    var secondNumber = "";
+
+
     // Your code here...
     // How will you capture button clicks? .on
     // What will you do with the numbers clicked? change text numbers and append
@@ -8,20 +13,25 @@ $(document).ready(function() {
     // How will you know the "value" of a number clicked? 
     // How will you know when a user is done entering the first number? operator
     
-    $(document).on("click", function() {
-        event.preventDefault();
-        clickEventHandler(event);
+    $(".btn").on("click", function(event) {
+        targetValue = $(this).attr("value");
+
+        if (targetValue !== null) {
+            //  Button press resolution goes here.
+            storeNumber(targetValue);
+        }
     })
-});
 
-function clickEventHandler(event) {
-    targetElement = event.target;
-
-    if (targetElement.className.indexOf("btn") > -1) {
-        console.log(targetElement);
-        targetValue = targetElement.getAttribute("value");
-
-        alert("You pressed " + targetValue);
+    function storeNumber(numberValue) {
+        if (!isNaN(numberValue)) {
+            if (operator == "") {
+                firstNumber += numberValue;
+                $("#first-number").text(firstNumber);
+            } else {
+                secondNumber += numberValue;
+                $("#second-number").text(secondNumber);
+            }
+        }
     }
-}
+});
     
