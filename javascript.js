@@ -38,5 +38,26 @@ $(document).ready(function() {
             $("#operator").text(numberText);
         }
     }
+    function result() {
+        var total
+        var number1 = parseInt(firstNumber)
+        var number2 = parseInt(secondNumber)
+        switch (operator) {
+        case "plus":
+            total = number1 + number2;
+            break;
+    case "minus":
+    total = number1 - number2;
+    break;
+case "times":
+    total = number1 * number2;
+    break;
+case "divide":
+    total = number1 / number2;
+    break;
+case "power":
+    total = number1 ^ number2;
+    break;
+
 });
     
